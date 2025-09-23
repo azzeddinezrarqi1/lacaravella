@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                À propos de La Caravela
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Découvrez notre passion pour l'art de la glace artisanale
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+                <h2 class="text-3xl font-display font-bold text-gray-900 mb-6">
+                    Notre Histoire
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    La Caravela est née d'une passion pour l'art de la glace artisanale. 
+                    Depuis notre création, nous nous efforçons de créer des expériences gustatives 
+                    uniques et mémorables.
+                </p>
+                <p class="text-lg text-gray-600 mb-6">
+                    Notre équipe d'artisans glaciers combine tradition et innovation pour 
+                    créer des parfums exceptionnels qui éveillent les sens et créent des 
+                    moments de bonheur partagé.
+                </p>
+            </div>
+            <div class="bg-blue-100 rounded-lg p-8">
+                <div class="text-center">
+                    <i class="fas fa-ice-cream text-6xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Artisanat Premium</h3>
+                    <p class="text-gray-600">Chaque glace est créée avec soin et passion</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-16">
+            <h2 class="text-3xl font-display font-bold text-gray-900 mb-8 text-center">
+                Nos Valeurs
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Qualité</h3>
+                    <p class="text-gray-600">Ingrédients naturels et de première qualité</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Passion</h3>
+                    <p class="text-gray-600">Amour de l'artisanat et de la créativité</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Communauté</h3>
+                    <p class="text-gray-600">Partage et moments de bonheur</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

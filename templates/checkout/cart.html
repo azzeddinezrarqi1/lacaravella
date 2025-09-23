@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mon Panier - La Caravela{% endblock %}
+
+{% block meta_description %}Consultez votre panier de glaces artisanales La Caravela. Personnalisez vos commandes et procédez au paiement sécurisé.{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- En-tête -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+                Mon Panier
+            </h1>
+            <p class="text-xl text-gray-600">
+                Vérifiez vos articles avant de passer commande
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Articles du panier -->
+            <div class="lg:col-span-2">
+                {% if cart_items %}
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        {% for item in cart_items %}
+                        <div class="p-6 border-b border-gray-200 last:border-b-0">
+                            <div class="flex items-center space-x-4">
+                                <!-- Image du produit -->
+                                <div class="flex-shrink-0">
+                                    <img class="h-20 w-20 rounded-lg object-cover" 
+                                         src="{% if item.product.primary_image %}{{ item.product.primary_image.url }}{% else %}{% static 'images/sample-product.jpg' %}{% endif %}" 
+                                         alt="{{ item.product.name }}">
+                                </div>
+                                
+                                <!-- Informations du produit -->
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-lg font-semibold text-gray-900">{{ item.product.name }}</h3>
+                                    {% if item.flavor %}
+                                        <p class="text-sm text-gray-600">Parfum: {{ item.flavor.name }}</p>
+                                    {% endif %}
+                                    
+                                    <!-- Personnalisations -->
+                                    {% if item.customizations %}
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-600">Personnalisations:</p>
+                                            <ul class="text-sm text-gray-500">
+                                                {% for customization_id, details in item.customizations.items %}
+                                                    <li>• {{ details.name }} x{{ details.quantity }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!-- Quantité et prix -->
+                                <div class="flex items-center space-x-4">
+                                    <!-- Contrôle de quantité -->
+                                    <div class="flex items-center border border-gray-300 rounded-md">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800" 
+                                                onclick="updateQuantity({{ item.id }}, -1)">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <span class="px-4 py-2 text-gray-900 font-medium">{{ item.quantity }}</span>
+                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800" 
+                                                onclick="updateQuantity({{ item.id }}, 1)">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Prix -->
+                                    <div class="text-right">
+                                        <p class="text-lg font-semibold text-sky-600">{{ item.total_price }} MAD</p>
+                                        <p class="text-sm text-gray-500">{{ item.unit_price }} MAD / unité</p>
+                                    </div>
+                                    
+                                    <!-- Bouton supprimer -->
+                                    <button class="text-red-500 hover:text-red-700 p-2" 
+                                            onclick="removeItem({{ item.id }})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <!-- Panier vide -->
+                    <div class="bg-white rounded-lg shadow-sm p-12 text-center">
+                        <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-shopping-cart text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Votre panier est vide</h3>
+                        <p class="text-gray-600 mb-6">Découvrez nos délicieuses glaces artisanales</p>
+                        <a href="{% url 'products:product_list' %}" 
+                           class="inline-flex items-center px-6 py-3 bg-sky-600 text-white font-medium rounded-lg hover:bg-sky-700 transition-colors">
+                            <i class="fas fa-ice-cream mr-2"></i>
+                            Voir nos glaces
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Résumé de commande -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Résumé de commande</h3>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sous-total</span>
+                            <span class="font-medium">{{ cart.subtotal }} MAD</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Livraison</span>
+                            <span class="font-medium">{{ cart.shipping_cost }} MAD</span>
+                        </div>
+                        {% if cart.discount_amount > 0 %}
+                        <div class="flex justify-between text-green-600">
+                            <span>Remise</span>
+                            <span>-{{ cart.discount_amount }} MAD</span>
+                        </div>
+                        {% endif %}
+                        <hr class="border-gray-200">
+                        <div class="flex justify-between text-lg font-semibold">
+                            <span>Total</span>
+                            <span class="text-sky-600">{{ cart.total }} MAD</span>
+                        </div>
+                    </div>
+                    
+                    {% if cart_items %}
+                        <a href="{% url 'checkout:checkout' %}" 
+                           class="w-full bg-sky-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-sky-700 transition-colors text-center block mb-4">
+                            <i class="fas fa-credit-card mr-2"></i>
+                            Passer commande
+                        </a>
+                        
+                        <a href="{% url 'products:product_list' %}" 
+                           class="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors text-center block">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Continuer mes achats
+                        </a>
+                    {% endif %}
+                    
+                    <!-- Code promo -->
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <h4 class="text-sm font-medium text-gray-900 mb-3">Code promo</h4>
+                        <div class="flex space-x-2">
+                            <input type="text" 
+                                   class="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" 
+                                   placeholder="Entrez votre code">
+                            <button class="px-4 py-2 bg-pink-600 text-white text-sm font-medium rounded-md hover:bg-pink-700 transition-colors">
+                                Appliquer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateQuantity(itemId, change) {
+    // Implémentation AJAX pour mettre à jour la quantité
+    fetch(`/checkout/update-cart/${itemId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            quantity_change: change
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        }
+    });
+}
+
+function removeItem(itemId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cet article ?')) {
+        fetch(`/checkout/remove-from-cart/${itemId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            }
+        });
+    }
+}
+</script>
+
+<!-- CSRF Token pour les requêtes AJAX -->
+{% csrf_token %}
+{% endblock %}

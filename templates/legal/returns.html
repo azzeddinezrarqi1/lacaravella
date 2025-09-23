@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Retours - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-sm p-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Politique de Retours</h1>
+            
+            <div class="prose max-w-none">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">1. Délai de Retour</h2>
+                <p class="text-gray-600 mb-6">
+                    Vous disposez de 7 jours à compter de la réception de votre commande 
+                    pour demander un retour ou un échange.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">2. Conditions de Retour</h2>
+                <p class="text-gray-600 mb-6">
+                    <ul class="list-disc list-inside text-gray-600 mb-6">
+                        <li>Produits non consommés et dans leur emballage d'origine</li>
+                        <li>Produits conservés dans les conditions appropriées</li>
+                        <li>Justificatif d'achat (facture ou reçu)</li>
+                    </ul>
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">3. Processus de Retour</h2>
+                <p class="text-gray-600 mb-6">
+                    <ol class="list-decimal list-inside text-gray-600 mb-6">
+                        <li>Contactez-nous par email avec votre numéro de commande</li>
+                        <li>Nous vous fournirons un numéro de retour</li>
+                        <li>Retournez le produit dans son emballage d'origine</li>
+                        <li>Nous procéderons au remboursement sous 5 jours ouvrés</li>
+                    </ol>
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">4. Remboursement</h2>
+                <p class="text-gray-600 mb-6">
+                    Le remboursement sera effectué selon le mode de paiement utilisé lors de la commande. 
+                    Les frais de livraison ne sont pas remboursés sauf en cas d'erreur de notre part.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">5. Contact</h2>
+                <p class="text-gray-600 mb-6">
+                    Pour toute question concernant les retours, contactez-nous à 
+                    <a href="mailto:retours@lacaravela.com" class="text-blue-600 hover:text-blue-700">retours@lacaravela.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

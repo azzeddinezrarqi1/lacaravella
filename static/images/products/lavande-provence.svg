@@ -1,0 +1,28 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond -->
+  <rect width="400" height="400" fill="#F8F0FF"/>
+  
+  <!-- Base de la glace -->
+  <circle cx="200" cy="300" r="120" fill="#E6E6FA" stroke="#DDA0DD" stroke-width="2"/>
+  
+  <!-- Glace lavande -->
+  <circle cx="200" cy="280" r="100" fill="#DDA0DD" opacity="0.9"/>
+  
+  <!-- Partie crémeuse -->
+  <circle cx="180" cy="260" r="80" fill="#D8BFD8"/>
+  <circle cx="220" cy="260" r="70" fill="#DA70D6"/>
+  
+  <!-- Fleurs de lavande -->
+  <circle cx="160" cy="240" r="4" fill="#9370DB"/>
+  <circle cx="240" cy="240" r="3" fill="#9370DB"/>
+  <circle cx="180" cy="220" r="3" fill="#9370DB"/>
+  <circle cx="220" cy="220" r="4" fill="#9370DB"/>
+  <circle cx="200" cy="200" r="3" fill="#9370DB"/>
+  
+  <!-- Tiges de lavande -->
+  <line x1="160" y1="240" x2="160" y2="250" stroke="#8B7D8B" stroke-width="2"/>
+  <line x1="240" y1="240" x2="240" y2="250" stroke="#8B7D8B" stroke-width="2"/>
+  
+  <!-- Texte -->
+  <text x="200" y="350" text-anchor="middle" fill="#333" font-family="Arial" font-size="18" font-weight="bold">Lavande de Provence</text>
+</svg>

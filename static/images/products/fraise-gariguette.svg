@@ -1,0 +1,38 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="strawberry" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF69B4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF1493;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Sorbet bowl -->
+  <ellipse cx="200" cy="200" rx="70" ry="40" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="2"/>
+  
+  <!-- Strawberry sorbet -->
+  <circle cx="180" cy="180" r="30" fill="url(#strawberry)"/>
+  <circle cx="220" cy="180" r="30" fill="url(#strawberry)"/>
+  
+  <!-- Strawberry pieces -->
+  <circle cx="170" cy="170" r="5" fill="#FF1493"/>
+  <circle cx="190" cy="175" r="4" fill="#FF1493"/>
+  <circle cx="210" cy="170" r="5" fill="#FF1493"/>
+  <circle cx="230" cy="175" r="4" fill="#FF1493"/>
+  
+  <!-- Mint leaves -->
+  <path d="M 190 160 Q 195 155 200 160 Q 205 155 210 160" stroke="#32CD32" stroke-width="3" fill="none"/>
+  <path d="M 185 165 Q 190 160 195 165 Q 200 160 205 165" stroke="#32CD32" stroke-width="2" fill="none"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="80" r="20" fill="#FF69B4" opacity="0.4"/>
+  <circle cx="300" cy="100" r="25" fill="#FFB6C1" opacity="0.3"/>
+  <circle cx="150" cy="220" r="15" fill="#FF1493" opacity="0.4"/>
+  <circle cx="250" cy="240" r="18" fill="#FF69B4" opacity="0.3"/>
+</svg>

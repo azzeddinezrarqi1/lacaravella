@@ -1,0 +1,43 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gelato" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D2691E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6347;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Gelato display case -->
+  <rect x="120" y="150" width="160" height="100" rx="10" fill="#F8F8FF" stroke="#D3D3D3" stroke-width="2"/>
+  
+  <!-- Gelato scoops in display -->
+  <circle cx="150" cy="180" r="20" fill="#8B4513"/>
+  <circle cx="200" cy="180" r="20" fill="#FF6347"/>
+  <circle cx="250" cy="180" r="20" fill="#32CD32"/>
+  
+  <circle cx="150" cy="220" r="20" fill="#FFD700"/>
+  <circle cx="200" cy="220" r="20" fill="#FF69B4"/>
+  <circle cx="250" cy="220" r="20" fill="#4169E1"/>
+  
+  <!-- Gelato cone -->
+  <path d="M 200 250 L 180 200 L 220 200 Z" fill="#D2691E"/>
+  <ellipse cx="200" cy="190" rx="25" ry="35" fill="url(#gelato)"/>
+  
+  <!-- Waffle cone pattern -->
+  <path d="M 185 205 L 215 205" stroke="#8B4513" stroke-width="1"/>
+  <path d="M 185 210 L 215 210" stroke="#8B4513" stroke-width="1"/>
+  <path d="M 185 215 L 215 215" stroke="#8B4513" stroke-width="1"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="80" cy="80" r="20" fill="#FF6347" opacity="0.4"/>
+  <circle cx="320" cy="100" r="25" fill="#32CD32" opacity="0.3"/>
+  <circle cx="100" cy="200" r="15" fill="#FFD700" opacity="0.5"/>
+  <circle cx="300" cy="180" r="18" fill="#FF69B4" opacity="0.4"/>
+</svg>

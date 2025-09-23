@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nos Catégories - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- En-tête -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+                Nos Catégories
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Explorez nos différentes gammes de glaces artisanales
+            </p>
+        </div>
+
+        <!-- Grille des catégories -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for category in categories %}
+            <div class="group bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 p-6 hover:shadow-md transition-shadow" data-reveal>
+                <div class="aspect-[4/3] rounded-xl bg-gray-100 overflow-hidden mb-4">
+                    {% if category.image %}
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}" class="h-full w-full object-cover group-hover:scale-[1.03] transition-transform">
+                    {% else %}
+                        <div class="h-full w-full bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-6xl text-blue-400"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="text-center">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ category.name }}</h3>
+                    <p class="text-sm text-gray-600 mb-4">{{ category.description|truncatechars:80 }}</p>
+                    <a href="{% url 'products:category_detail' category.slug %}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        Découvrir
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center py-12">
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">Aucune catégorie trouvée</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

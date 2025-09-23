@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter un produit — La Caravela{% endblock %}
+
+{% block content %}
+<section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-reveal>
+    <h1 class="text-2xl font-display font-semibold text-gray-900 mb-6">Ajouter un produit</h1>
+
+    <form method="post" enctype="multipart/form-data" class="bg-white rounded-2xl shadow p-6 space-y-5">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="rounded-lg border border-red-300 bg-red-50 text-red-700 p-3 text-sm">
+                {% for err in form.non_field_errors %}<p>{{ err }}</p>{% endfor %}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="id_{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <p class="mt-1 text-xs text-gray-500">{{ field.help_text }}</p>
+                {% endif %}
+                {% if field.errors %}
+                    <p class="mt-1 text-sm text-red-600">{{ field.errors|striptags }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="id_primary_image">Image principale</label>
+            <input type="file" name="primary_image" id="id_primary_image" accept="image/*" class="block w-full rounded-lg border border-gray-300 px-3 py-2.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        </div>
+
+        <div class="flex items-center justify-end gap-3">
+            <a href="{% url 'products:product_list' %}" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">Annuler</a>
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700">Enregistrer</button>
+        </div>
+    </form>
+</section>
+
+{% block extra_js %}
+<script>
+    (function(){
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], textarea, select');
+        inputs.forEach(function(el){
+            el.classList.add('block','w-full','rounded-lg','border','border-gray-300','px-3','py-2.5','shadow-sm','focus:outline-none','focus:ring-2','focus:ring-blue-500','focus:border-transparent');
+        });
+    })();
+</script>
+{% endblock %}
+{% endblock %}
+
+
+
+
+
+

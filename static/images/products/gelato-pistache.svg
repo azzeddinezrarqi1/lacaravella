@@ -1,0 +1,38 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#98FB98;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pistachio" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#32CD32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Gelato display -->
+  <rect x="120" y="150" width="160" height="100" rx="10" fill="#F8F8FF" stroke="#D3D3D3" stroke-width="2"/>
+  
+  <!-- Pistachio gelato -->
+  <circle cx="200" cy="200" r="25" fill="url(#pistachio)"/>
+  
+  <!-- Pistachio nuts -->
+  <ellipse cx="190" cy="190" rx="3" ry="2" fill="#90EE90"/>
+  <ellipse cx="210" cy="195" rx="2" ry="2" fill="#90EE90"/>
+  <ellipse cx="195" cy="205" rx="3" ry="2" fill="#90EE90"/>
+  <ellipse cx="205" cy="210" rx="2" ry="2" fill="#90EE90"/>
+  
+  <!-- Italian flag colors -->
+  <rect x="180" y="120" width="40" height="20" fill="#228B22"/>
+  <rect x="220" y="120" width="40" height="20" fill="#FFFFFF"/>
+  <rect x="260" y="120" width="40" height="20" fill="#FF0000"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="80" cy="80" r="20" fill="#32CD32" opacity="0.4"/>
+  <circle cx="320" cy="100" r="25" fill="#98FB98" opacity="0.3"/>
+  <circle cx="100" cy="200" r="15" fill="#90EE90" opacity="0.4"/>
+  <circle cx="300" cy="180" r="18" fill="#32CD32" opacity="0.3"/>
+</svg>

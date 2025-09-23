@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ category.name }} - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <a href="{% url 'home' %}" class="text-gray-400 hover:text-gray-500">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-4"></i>
+                            <a href="{% url 'products:product_list' %}" class="text-gray-500 hover:text-gray-700">Produits</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-4"></i>
+                            <span class="text-gray-900 font-medium">{{ category.name }}</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Category Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-red-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">{{ category.name }}</h1>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                    {{ category.description|default:"Découvrez notre sélection de glaces artisanales de qualité supérieure." }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {% if page_obj %}
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-gray-900">
+                    {{ page_obj.paginator.count }} produit{{ page_obj.paginator.count|pluralize }} trouvé{{ page_obj.paginator.count|pluralize }}
+                </h2>
+                
+                <!-- Sort Options -->
+                <div class="flex items-center space-x-4">
+                    <label for="sort" class="text-sm font-medium text-gray-700">Trier par :</label>
+                    <select id="sort" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="name">Nom</option>
+                        <option value="price_asc">Prix croissant</option>
+                        <option value="price_desc">Prix décroissant</option>
+                        <option value="popularity">Popularité</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for product in page_obj %}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
+                <div class="aspect-w-1 aspect-h-1">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" 
+                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                    {% else %}
+                        <div class="w-full h-64 bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-6xl text-blue-400"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                            <a href="{% url 'products:product_detail' product.slug %}">{{ product.name }}</a>
+                        </h3>
+                        <button class="text-gray-400 hover:text-red-500 transition-colors">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 mb-4 line-clamp-2">
+                        {{ product.description|default:"Une délicieuse glace artisanale préparée avec des ingrédients de qualité supérieure."|truncatewords:15 }}
+                    </p>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-bold text-blue-600">{{ product.price }} MAD</span>
+                            <span class="text-sm text-gray-500">/portion</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm">
+                                <i class="fas fa-shopping-cart mr-1"></i>
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Features -->
+                    <div class="flex items-center space-x-4 mt-4 pt-4 border-t border-gray-100">
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-leaf text-green-500 text-xs"></i>
+                            <span class="text-xs text-gray-600">Bio</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-snowflake text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-600">Frais</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-star text-yellow-500 text-xs"></i>
+                            <span class="text-xs text-gray-600">4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+        <div class="mt-12 flex items-center justify-center">
+            <nav class="flex items-center space-x-2">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" 
+                   class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <span class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-md">
+                        {{ num }}
+                    </span>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}" 
+                       class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                        {{ num }}
+                    </a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" 
+                   class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                {% endif %}
+            </nav>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <!-- No Products -->
+        <div class="text-center py-12">
+            <div class="max-w-md mx-auto">
+                <i class="fas fa-ice-cream text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Aucun produit trouvé</h3>
+                <p class="text-gray-500 mb-6">Il n'y a actuellement aucun produit dans cette catégorie.</p>
+                <a href="{% url 'products:product_list' %}" 
+                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Voir tous les produits
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

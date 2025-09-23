@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <a href="{% url 'home' %}" class="text-gray-400 hover:text-gray-500">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-4"></i>
+                            <a href="{% url 'products:product_list' %}" class="text-gray-500 hover:text-gray-700">Produits</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-4"></i>
+                            <span class="text-gray-900 font-medium">{{ product.name }}</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                <!-- Product Image -->
+                <div class="space-y-4">
+                    <div class="aspect-w-1 aspect-h-1">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" 
+                                 class="w-full h-96 object-cover rounded-lg">
+                        {% else %}
+                            <div class="w-full h-96 bg-gradient-to-br from-blue-100 to-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-ice-cream text-6xl text-blue-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Additional Images Placeholder -->
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded cursor-pointer">
+                            <div class="w-full h-20 bg-gradient-to-br from-blue-100 to-red-100 rounded flex items-center justify-center">
+                                <i class="fas fa-image text-blue-400"></i>
+                            </div>
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded cursor-pointer">
+                            <div class="w-full h-20 bg-gradient-to-br from-blue-100 to-red-100 rounded flex items-center justify-center">
+                                <i class="fas fa-image text-blue-400"></i>
+                            </div>
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded cursor-pointer">
+                            <div class="w-full h-20 bg-gradient-to-br from-blue-100 to-red-100 rounded flex items-center justify-center">
+                                <i class="fas fa-image text-blue-400"></i>
+                            </div>
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded cursor-pointer">
+                            <div class="w-full h-20 bg-gradient-to-br from-blue-100 to-red-100 rounded flex items-center justify-center">
+                                <i class="fas fa-image text-blue-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="space-y-6">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">{{ product.name }}</h1>
+                        <p class="text-lg text-gray-600 mt-2">{{ product.category.name }}</p>
+                        <div class="flex items-center mt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="ml-2 text-sm text-gray-600">(4.8/5)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Description</h3>
+                        <p class="text-gray-700 leading-relaxed">{{ product.description|default:"Une délicieuse glace artisanale préparée avec des ingrédients de qualité supérieure." }}</p>
+                    </div>
+
+                    <!-- Customization Options -->
+                    {% if customization_options %}
+                    <div class="border-t pt-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Personnalisation</h3>
+                        <div class="space-y-4">
+                            {% for option in customization_options %}
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">{{ option.name }}</label>
+                                <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    {% for choice in option.choices.all %}
+                                    <option value="{{ choice.id }}">{{ choice.name }} (+{{ choice.price_extra }} MAD)</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Price and Add to Cart -->
+                    <div class="border-t pt-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-3xl font-bold text-blue-600">{{ product.price }} MAD</span>
+                                <span class="text-sm text-gray-500 ml-2">/portion</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center border border-gray-300 rounded-md">
+                                    <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="px-4 py-2 border-x border-gray-300">1</span>
+                                    <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <button class="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors">
+                                    <i class="fas fa-shopping-cart mr-2"></i>
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Features -->
+                    <div class="grid grid-cols-2 gap-4 pt-6 border-t">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-leaf text-green-500"></i>
+                            <span class="text-sm text-gray-600">Bio</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-snowflake text-blue-500"></i>
+                            <span class="text-sm text-gray-600">Frais</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-heart text-red-500"></i>
+                            <span class="text-sm text-gray-600">Artisanal</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <span class="text-sm text-gray-600">Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Similar Products -->
+        {% if similar_products %}
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Produits similaires</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {% for similar in similar_products %}
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-w-1 aspect-h-1">
+                        {% if similar.image %}
+                            <img src="{{ similar.image.url }}" alt="{{ similar.name }}" class="w-full h-48 object-cover">
+                        {% else %}
+                            <div class="w-full h-48 bg-gradient-to-br from-blue-100 to-red-100 flex items-center justify-center">
+                                <i class="fas fa-ice-cream text-4xl text-blue-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900">{{ similar.name }}</h3>
+                        <p class="text-sm text-gray-600">{{ similar.category.name }}</p>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="text-lg font-bold text-blue-600">{{ similar.price }} MAD</span>
+                            <button class="text-blue-600 hover:text-blue-700">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

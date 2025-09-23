@@ -1,0 +1,38 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0E68C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DDA0DD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="almond" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5DEB3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Ice cream bowl -->
+  <ellipse cx="200" cy="200" rx="70" ry="40" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="2"/>
+  
+  <!-- Almond ice cream -->
+  <circle cx="180" cy="180" r="30" fill="url(#almond)"/>
+  <circle cx="220" cy="180" r="30" fill="url(#almond)"/>
+  
+  <!-- Almond pieces -->
+  <ellipse cx="170" cy="170" rx="4" ry="2" fill="#D2691E"/>
+  <ellipse cx="190" cy="175" rx="3" ry="2" fill="#D2691E"/>
+  <ellipse cx="210" cy="170" rx="4" ry="2" fill="#D2691E"/>
+  <ellipse cx="230" cy="175" rx="3" ry="2" fill="#D2691E"/>
+  
+  <!-- Organic symbol -->
+  <circle cx="200" cy="120" r="15" fill="#32CD32" opacity="0.8"/>
+  <text x="200" y="125" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="white">BIO</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="80" r="20" fill="#DDA0DD" opacity="0.4"/>
+  <circle cx="300" cy="100" r="25" fill="#F0E68C" opacity="0.3"/>
+  <circle cx="150" cy="220" r="15" fill="#F5DEB3" opacity="0.4"/>
+  <circle cx="250" cy="240" r="18" fill="#DDA0DD" opacity="0.3"/>
+</svg>

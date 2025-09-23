@@ -1,0 +1,50 @@
+# Django Core
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+
+# Database
+# psycopg2-binary pinned for Postgres; omit on Windows/Python 3.13 for dev
+# psycopg2-binary==2.9.7
+django-environ==0.11.2
+
+# Cache & Performance
+redis==5.0.1
+django-redis==5.4.0
+django-cacheops==7.2
+
+# Authentication & Security
+django-allauth==0.57.0
+django-crispy-forms==2.1
+crispy-tailwind==0.5.0
+
+# Media & Static Files
+Pillow==10.4.0
+django-storages==1.14.2
+boto3==1.29.3
+
+# Payment Integration
+stripe==7.6.0
+django-payments==2.0.0
+
+# Email & Marketing
+django-anymail==10.2
+klaviyo==3.1.7
+
+# SEO & Analytics
+django-meta==2.4.1
+
+# Development & Testing
+pytest==7.4.3
+pytest-django==4.5.2
+factory-boy==3.3.0
+coverage==7.3.2
+
+# Production
+gunicorn==21.2.0
+whitenoise==6.6.0
+
+# Utilities
+python-decouple==3.8
+celery==5.3.4
+django-celery-beat==2.5.0 

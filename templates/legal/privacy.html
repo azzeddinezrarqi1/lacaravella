@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Politique de Confidentialité - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-sm p-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Politique de Confidentialité</h1>
+            
+            <div class="prose max-w-none">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">1. Collecte des Données</h2>
+                <p class="text-gray-600 mb-6">
+                    Nous collectons uniquement les données nécessaires pour traiter vos commandes 
+                    et améliorer votre expérience sur notre site.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">2. Utilisation des Données</h2>
+                <p class="text-gray-600 mb-6">
+                    Vos données personnelles sont utilisées exclusivement pour :
+                    <ul class="list-disc list-inside text-gray-600 mb-6">
+                        <li>Traiter vos commandes</li>
+                        <li>Vous contacter concernant vos commandes</li>
+                        <li>Améliorer nos services</li>
+                    </ul>
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">3. Protection des Données</h2>
+                <p class="text-gray-600 mb-6">
+                    Nous mettons en place des mesures de sécurité appropriées pour protéger 
+                    vos données personnelles contre tout accès non autorisé.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">4. Vos Droits</h2>
+                <p class="text-gray-600 mb-6">
+                    Vous avez le droit d'accéder, de modifier ou de supprimer vos données personnelles. 
+                    Contactez-nous pour exercer ces droits.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">5. Contact</h2>
+                <p class="text-gray-600 mb-6">
+                    Pour toute question concernant cette politique, contactez-nous à 
+                    <a href="mailto:privacy@lacaravela.com" class="text-blue-600 hover:text-blue-700">privacy@lacaravela.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

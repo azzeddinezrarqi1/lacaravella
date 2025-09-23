@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Paiement - La Caravela{% endblock %}
+
+{% block meta_description %}Paiement sécurisé pour votre commande de glaces artisanales La Caravela.{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- En-tête -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">
+                Paiement
+            </h1>
+            <p class="text-xl text-gray-600">
+                Finalisez votre commande en toute sécurité
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Formulaire de paiement -->
+            <div>
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Informations de paiement</h2>
+                    
+                    <!-- Stripe Elements sera intégré ici -->
+                    <div id="stripe-payment-form">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Numéro de carte</label>
+                            <div id="card-element" class="px-3 py-2 border border-gray-300 rounded-md">
+                                <!-- Stripe Elements sera injecté ici -->
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Date d'expiration</label>
+                                <div id="card-expiry-element" class="px-3 py-2 border border-gray-300 rounded-md">
+                                    <!-- Stripe Elements sera injecté ici -->
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">CVC</label>
+                                <div id="card-cvc-element" class="px-3 py-2 border border-gray-300 rounded-md">
+                                    <!-- Stripe Elements sera injecté ici -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nom sur la carte</label>
+                            <input type="text" id="cardholder-name" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        </div>
+                        
+                        <button id="submit-payment" 
+                                class="w-full bg-sky-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-sky-700 transition-colors disabled:opacity-50">
+                            <i class="fas fa-lock mr-2"></i>
+                            Payer 104 MAD
+                        </button>
+                        
+                        <div id="payment-errors" class="mt-4 text-red-600 text-sm hidden"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Résumé de commande -->
+            <div>
+                <div class="bg-white rounded-lg shadow-sm p-6 sticky top-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Résumé de commande</h3>
+                    
+                    <!-- Informations de livraison -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-900 mb-2">Livraison</h4>
+                        <p class="text-sm text-gray-600">
+                            Ahmed Benali<br>
+                            123 Rue Mohammed V<br>
+                            Casablanca 20000, Maroc
+                        </p>
+                    </div>
+                    
+                    <!-- Articles -->
+                    <div class="space-y-4 mb-6">
+                        <h4 class="font-medium text-gray-900">Articles</h4>
+                        <div class="flex items-center space-x-3">
+                            <img class="h-12 w-12 rounded-lg object-cover" 
+                                 src="{% static 'images/sample-product.jpg' %}" 
+                                 alt="Glace">
+                            <div class="flex-1">
+                                <h5 class="font-medium text-gray-900">Vanille de Madagascar</h5>
+                                <p class="text-sm text-gray-600">Parfum: Vanille</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium text-sky-600">45 MAD</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Totaux -->
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sous-total</span>
+                            <span class="font-medium">45 MAD</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Livraison</span>
+                            <span class="font-medium">59 MAD</span>
+                        </div>
+                        <hr class="border-gray-200">
+                        <div class="flex justify-between text-lg font-semibold">
+                            <span>Total</span>
+                            <span class="text-sky-600">104 MAD</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Méthodes de paiement acceptées -->
+                    <div class="border-t border-gray-200 pt-6">
+                        <h4 class="font-medium text-gray-900 mb-3">Méthodes de paiement</h4>
+                        <div class="flex space-x-3">
+                            <img src="{% static 'images/payment-methods.png' %}" alt="Méthodes de paiement" class="h-8">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            Paiement sécurisé par Stripe
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Configuration Stripe (à remplacer par vos vraies clés)
+const stripe = Stripe('pk_test_...');
+const elements = stripe.elements();
+
+// Créer les éléments de carte
+const cardElement = elements.create('card');
+const cardExpiryElement = elements.create('cardExpiry');
+const cardCvcElement = elements.create('cardCvc');
+
+// Monter les éléments
+cardElement.mount('#card-element');
+cardExpiryElement.mount('#card-expiry-element');
+cardCvcElement.mount('#card-cvc-element');
+
+// Gérer la soumission du formulaire
+document.getElementById('submit-payment').addEventListener('click', async (e) => {
+    e.preventDefault();
+    
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: {
+            name: document.getElementById('cardholder-name').value,
+        },
+    });
+    
+    if (error) {
+        document.getElementById('payment-errors').textContent = error.message;
+        document.getElementById('payment-errors').classList.remove('hidden');
+    } else {
+        // Envoyer le paymentMethod.id à votre serveur
+        console.log('Payment method created:', paymentMethod);
+        // Rediriger vers la confirmation de commande
+        window.location.href = '/checkout/order-confirmation/12345/';
+    }
+});
+</script>
+{% endblock %}

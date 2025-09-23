@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Connexion — La Caravela{% endblock %}
+
+{% block content %}
+    <section class="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8" data-reveal>
+        <div class="w-full max-w-md">
+            <div class="bg-white shadow-xl rounded-2xl p-8">
+                <h1 class="text-2xl font-display font-semibold text-gray-900 mb-2">Connexion</h1>
+                <p class="text-gray-600 mb-6">Heureux de vous revoir. Accédez à votre compte.</p>
+
+                {% if form.non_field_errors %}
+                    <div class="mb-4 rounded-lg border border-red-300 bg-red-50 text-red-700 p-3 text-sm">
+                        {% for err in form.non_field_errors %}
+                            <p>{{ err }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="post" action="" class="space-y-5">
+                    {% csrf_token %}
+
+                    {% for field in form.visible_fields %}
+                        <div>
+                            <label for="id_{{ field.name }}" class="block text-sm font-medium text-gray-700 mb-1">{{ field.label }}</label>
+                            {{ field.as_widget|safe }}
+                            {% if field.help_text %}
+                                <p class="mt-1 text-xs text-gray-500">{{ field.help_text }}</p>
+                            {% endif %}
+                            {% if field.errors %}
+                                <p class="mt-1 text-sm text-red-600">
+                                    {{ field.errors|striptags }}
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="flex items-center justify-between">
+                        <a href="{% url 'account_reset_password' %}" class="text-sm text-blue-600 hover:text-blue-700">Mot de passe oublié ?</a>
+                    </div>
+
+                    <button type="submit" class="w-full inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2.5 font-medium hover:bg-blue-700 transition-colors">
+                        Se connecter
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-sm text-gray-600">
+                    Pas de compte ?
+                    <a href="{% url 'account_signup' %}" class="text-blue-600 hover:text-blue-700 font-medium">Créer un compte</a>
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Tailwind styles for Django widgets
+    (function(){
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(function(el){
+            if (['checkbox','radio','hidden','submit','button'].includes(el.type)) return;
+            el.classList.add('block','w-full','rounded-lg','border','border-gray-300','px-3','py-2.5','shadow-sm','focus:outline-none','focus:ring-2','focus:ring-blue-500','focus:border-transparent');
+        });
+    })();
+</script>
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,355 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Démonstration des Effets Dynamiques - La Caravela{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/demo-effects.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- En-tête avec titre animé -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-display font-bold gradient-text mb-4" data-typewriter="Découvrez nos Effets Dynamiques" data-speed="100">
+            </h1>
+            <p class="text-xl text-gray-600 animate-fade-in">
+                Une expérience visuelle exceptionnelle avec des couleurs vibrantes et des animations fluides
+            </p>
+        </div>
+
+        <!-- Section des boutons colorés -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Boutons Colorés</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="btn-primary hover-ripple">Primaire</button>
+                <button class="btn-secondary hover-ripple">Secondaire</button>
+                <button class="btn-mint hover-ripple">Menthe</button>
+                <button class="btn-lavender hover-ripple">Lavande</button>
+                <button class="btn-coral hover-ripple">Corail</button>
+                <button class="btn-sunshine hover-ripple">Soleil</button>
+                <button class="btn-magic hover-ripple">Magique</button>
+                <button class="btn-rainbow hover-ripple">Arc-en-ciel</button>
+            </div>
+        </section>
+
+        <!-- Section des cartes de produits dynamiques -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Cartes de Produits</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="product-card-dynamic hover-tilt">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-blue-500 rounded-full mx-auto mb-4 animate-pulse"></div>
+                        <h3 class="text-xl font-semibold mb-2">Glace Vanille</h3>
+                        <p class="text-gray-600 mb-4">Une délicieuse glace à la vanille de Madagascar</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">45 MAD</span>
+                            <button class="btn-mint hover-ripple">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card-dynamic hover-tilt">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-mint-500 rounded-full mx-auto mb-4 animate-pulse" style="animation-delay: 0.5s;"></div>
+                        <h3 class="text-xl font-semibold mb-2">Glace Menthe</h3>
+                        <p class="text-gray-600 mb-4">Une glace rafraîchissante à la menthe</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-mint-600">45 MAD</span>
+                            <button class="btn-lavender hover-ripple">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card-dynamic hover-tilt">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-lavender-500 rounded-full mx-auto mb-4 animate-pulse" style="animation-delay: 1s;"></div>
+                        <h3 class="text-xl font-semibold mb-2">Glace Lavande</h3>
+                        <p class="text-gray-600 mb-4">Une glace parfumée à la lavande de Provence</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-lavender-600">45 MAD</span>
+                            <button class="btn-coral hover-ripple">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des cartes flottantes -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Cartes Flottantes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="floating-card">
+                    <div class="text-center">
+                        <i class="fas fa-star text-4xl text-sunshine-500 mb-4 animate-glow"></i>
+                        <h3 class="text-lg font-semibold mb-2">Qualité Premium</h3>
+                        <p class="text-gray-600">Des ingrédients de première qualité</p>
+                    </div>
+                </div>
+
+                <div class="floating-card">
+                    <div class="text-center">
+                        <i class="fas fa-leaf text-4xl text-mint-500 mb-4 animate-glow"></i>
+                        <h3 class="text-lg font-semibold mb-2">100% Naturel</h3>
+                        <p class="text-gray-600">Sans conservateurs artificiels</p>
+                    </div>
+                </div>
+
+                <div class="floating-card">
+                    <div class="text-center">
+                        <i class="fas fa-heart text-4xl text-coral-500 mb-4 animate-glow"></i>
+                        <h3 class="text-lg font-semibold mb-2">Fait avec Amour</h3>
+                        <p class="text-gray-600">Préparé avec passion</p>
+                    </div>
+                </div>
+
+                <div class="floating-card">
+                    <div class="text-center">
+                        <i class="fas fa-truck text-4xl text-lavender-500 mb-4 animate-glow"></i>
+                        <h3 class="text-lg font-semibold mb-2">Livraison Rapide</h3>
+                        <p class="text-gray-600">Livré chez vous rapidement</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des statistiques -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Nos Statistiques</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stats-card">
+                    <div class="text-4xl font-bold text-blue-600 mb-2" data-counter="150" data-duration="2000">0</div>
+                    <h3 class="text-lg font-semibold mb-2">Parfums Uniques</h3>
+                    <p class="text-gray-600">Plus de 150 parfums disponibles</p>
+                </div>
+
+                <div class="stats-card">
+                    <div class="text-4xl font-bold text-mint-600 mb-2" data-counter="10000" data-duration="3000">0</div>
+                    <h3 class="text-lg font-semibold mb-2">Clients Satisfaits</h3>
+                    <p class="text-gray-600">Plus de 10 000 clients heureux</p>
+                </div>
+
+                <div class="stats-card">
+                    <div class="text-4xl font-bold text-lavender-600 mb-2" data-counter="25" data-duration="2500">0</div>
+                    <h3 class="text-lg font-semibold mb-2">Années d'Expérience</h3>
+                    <p class="text-gray-600">Plus de 25 ans d'expertise</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des barres de progression -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Nos Compétences</h2>
+            <div class="max-w-2xl mx-auto space-y-6">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-semibold">Qualité des Ingrédients</span>
+                        <span class="text-blue-600 font-bold">95%</span>
+                    </div>
+                    <div class="progress-bar-dynamic">
+                        <div class="progress-fill-dynamic" data-progress="95" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-semibold">Satisfaction Client</span>
+                        <span class="text-mint-600 font-bold">98%</span>
+                    </div>
+                    <div class="progress-bar-dynamic">
+                        <div class="progress-fill-dynamic" data-progress="98" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-semibold">Innovation</span>
+                        <span class="text-lavender-600 font-bold">92%</span>
+                    </div>
+                    <div class="progress-bar-dynamic">
+                        <div class="progress-fill-dynamic" data-progress="92" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des badges dynamiques -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Nos Récompenses</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="badge-dynamic">
+                    <i class="fas fa-trophy mr-2"></i>
+                    Meilleure Glacerie 2023
+                </div>
+                <div class="badge-dynamic">
+                    <i class="fas fa-medal mr-2"></i>
+                    Prix Innovation
+                </div>
+                <div class="badge-dynamic">
+                    <i class="fas fa-star mr-2"></i>
+                    5 Étoiles Michelin
+                </div>
+                <div class="badge-dynamic">
+                    <i class="fas fa-award mr-2"></i>
+                    Label Bio
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des témoignages -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Témoignages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <p class="text-gray-700 mb-4">"Les meilleures glaces que j'aie jamais goûtées ! Les parfums sont exceptionnels."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">Marie L.</h4>
+                            <p class="text-sm text-gray-600">Cliente fidèle</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="text-gray-700 mb-4">"Un service impeccable et des glaces qui fondent en bouche. Je recommande !"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-mint-500 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">Pierre D.</h4>
+                            <p class="text-sm text-gray-600">Gourmet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="text-gray-700 mb-4">"La qualité artisanale se ressent dans chaque bouchée. Un vrai délice !"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-lavender-500 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">Sophie M.</h4>
+                            <p class="text-sm text-gray-600">Critique culinaire</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des cartes de prix -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Nos Formules</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="pricing-card">
+                    <h3 class="text-2xl font-bold mb-4">Découverte</h3>
+                    <div class="text-4xl font-bold text-blue-600 mb-4">150 MAD</div>
+                    <ul class="text-left space-y-2 mb-6">
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>3 parfums au choix</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Livraison gratuite</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Support 24/7</li>
+                    </ul>
+                    <button class="btn-secondary w-full">Choisir</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="badge-dynamic mb-4">Populaire</div>
+                    <h3 class="text-2xl font-bold mb-4">Gourmet</h3>
+                    <div class="text-4xl font-bold text-mint-600 mb-4">350 MAD</div>
+                    <ul class="text-left space-y-2 mb-6">
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>8 parfums premium</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Livraison express</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Support prioritaire</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Parfums exclusifs</li>
+                    </ul>
+                    <button class="btn-mint w-full">Choisir</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="text-2xl font-bold mb-4">Premium</h3>
+                    <div class="text-4xl font-bold text-lavender-600 mb-4">650 MAD</div>
+                    <ul class="text-left space-y-2 mb-6">
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>15 parfums premium</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Livraison même jour</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Concierge personnel</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Parfums sur mesure</li>
+                        <li><i class="fas fa-check text-mint-500 mr-2"></i>Événements privés</li>
+                    </ul>
+                    <button class="btn-lavender w-full">Choisir</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section des icônes interactives -->
+        <section class="mb-16 scroll-reveal">
+            <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Nos Services</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <i class="fas fa-shipping-fast text-6xl text-blue-500 icon-interactive mb-4"></i>
+                    <h3 class="font-semibold">Livraison</h3>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-phone text-6xl text-mint-500 icon-interactive mb-4"></i>
+                    <h3 class="font-semibold">Support</h3>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-shield-alt text-6xl text-lavender-500 icon-interactive mb-4"></i>
+                    <h3 class="font-semibold">Sécurité</h3>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-gift text-6xl text-coral-500 icon-interactive mb-4"></i>
+                    <h3 class="font-semibold">Cadeaux</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bouton de démonstration -->
+        <div class="text-center">
+            <button onclick="showNotification()" class="btn-rainbow text-lg px-8 py-4">
+                <i class="fas fa-magic mr-2"></i>
+                Voir une Notification Magique
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Script pour les notifications -->
+<script>
+function showNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'notification-dynamic success show';
+    notification.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Effet magique activé !';
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Animation du titre
+document.addEventListener('DOMContentLoaded', function() {
+    const title = document.querySelector('[data-typewriter]');
+    if (title) {
+        const text = title.dataset.typewriter;
+        const speed = parseInt(title.dataset.speed) || 100;
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                title.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
+    }
+});
+</script>
+
+{% block extra_js %}
+<script src="{% static 'js/demo-effects.js' %}"></script>
+{% endblock %}
+{% endblock %}

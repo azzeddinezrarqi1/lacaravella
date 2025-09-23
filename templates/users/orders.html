@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mes Commandes - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- En-tête -->
+        <div class="text-center mb-12 scroll-reveal">
+            <h1 class="text-4xl font-display font-bold gradient-text mb-4">
+                Mes Commandes
+            </h1>
+            <p class="text-xl text-gray-600 animate-fade-in">
+                Retrouvez l'historique de toutes vos commandes
+            </p>
+        </div>
+
+        <!-- Statistiques des commandes -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 scroll-reveal">
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-blue-600 mb-2" data-counter="12" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">Total Commandes</h3>
+                <p class="text-gray-600">Toutes confondues</p>
+            </div>
+
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-mint-600 mb-2" data-counter="8" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">Livrées</h3>
+                <p class="text-gray-600">Commandes terminées</p>
+            </div>
+
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-lavender-600 mb-2" data-counter="2" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">En cours</h3>
+                <p class="text-gray-600">En préparation</p>
+            </div>
+
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-coral-600 mb-2" data-counter="2" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">Annulées</h3>
+                <p class="text-gray-600">Commandes annulées</p>
+            </div>
+        </div>
+
+        <!-- Liste des commandes -->
+        <div class="space-y-6">
+            <!-- Commande 1 -->
+            <div class="product-card-dynamic hover-lift scroll-reveal">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold gradient-text">Commande #12345</h3>
+                        <p class="text-gray-600">15 septembre 2025</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-bold text-blue-600">245 MAD</p>
+                        <span class="badge-dynamic">Livré</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-blue-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Vanille de Madagascar</h4>
+                            <p class="text-gray-600">Quantité: 2</p>
+                            <p class="text-blue-600 font-semibold">90 MAD</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-mint-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-mint-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Chocolat Noir 70%</h4>
+                            <p class="text-gray-600">Quantité: 1</p>
+                            <p class="text-mint-600 font-semibold">50 MAD</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <p><i class="fas fa-truck mr-2"></i>Livré à: 123 Rue de la Glace, Paris</p>
+                        <p><i class="fas fa-clock mr-2"></i>Livraison: 16 septembre 2025 à 14:30</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-redo mr-2"></i>
+                            Recommander
+                        </button>
+                        <button class="btn-primary hover-ripple">
+                            <i class="fas fa-star mr-2"></i>
+                            Noter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commande 2 -->
+            <div class="product-card-dynamic hover-lift scroll-reveal">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold gradient-text">Commande #12344</h3>
+                        <p class="text-gray-600">12 septembre 2025</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-bold text-mint-600">182 MAD</p>
+                        <span class="badge-dynamic">En cours</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-lavender-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-lavender-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Mangue Passion</h4>
+                            <p class="text-gray-600">Quantité: 2</p>
+                            <p class="text-lavender-600 font-semibold">110 MAD</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-coral-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-coral-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Coco Lime</h4>
+                            <p class="text-gray-600">Quantité: 1</p>
+                            <p class="text-coral-600 font-semibold">52 MAD</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barre de progression -->
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium">Progression de la commande</span>
+                        <span class="text-sm text-mint-600">75%</span>
+                    </div>
+                    <div class="progress-bar-dynamic">
+                        <div class="progress-fill-dynamic" data-progress="75" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <p><i class="fas fa-truck mr-2"></i>Livraison prévue: 14 septembre 2025</p>
+                        <p><i class="fas fa-clock mr-2"></i>Statut: En préparation</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="btn-mint hover-ripple">
+                            <i class="fas fa-eye mr-2"></i>
+                            Suivre
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commande 3 -->
+            <div class="product-card-dynamic hover-lift scroll-reveal">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold gradient-text">Commande #12343</h3>
+                        <p class="text-gray-600">10 septembre 2025</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-bold text-lavender-600">328 MAD</p>
+                        <span class="badge-dynamic">Livré</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-sunshine-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-sunshine-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Pistache de Sicile</h4>
+                            <p class="text-gray-600">Quantité: 2</p>
+                            <p class="text-sunshine-600 font-semibold">130 MAD</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-blue-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Lavande de Provence</h4>
+                            <p class="text-gray-600">Quantité: 2</p>
+                            <p class="text-blue-600 font-semibold">116 MAD</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-50 rounded-lg">
+                        <div class="w-16 h-16 bg-mint-100 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-ice-cream text-mint-600 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Amande Bio</h4>
+                            <p class="text-gray-600">Quantité: 1</p>
+                            <p class="text-mint-600 font-semibold">56 MAD</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <p><i class="fas fa-truck mr-2"></i>Livré à: 123 Rue de la Glace, Paris</p>
+                        <p><i class="fas fa-clock mr-2"></i>Livraison: 11 septembre 2025 à 10:15</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-redo mr-2"></i>
+                            Recommander
+                        </button>
+                        <button class="btn-primary hover-ripple">
+                            <i class="fas fa-star mr-2"></i>
+                            Noter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="text-center mt-12">
+            <div class="flex justify-center space-x-2">
+                <button class="btn-secondary hover-ripple">
+                    <i class="fas fa-chevron-left mr-2"></i>
+                    Précédent
+                </button>
+                <button class="btn-primary hover-ripple">1</button>
+                <button class="btn-secondary hover-ripple">2</button>
+                <button class="btn-secondary hover-ripple">3</button>
+                <button class="btn-secondary hover-ripple">
+                    Suivant
+                    <i class="fas fa-chevron-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animation des compteurs
+    const counters = document.querySelectorAll('[data-counter]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.dataset.counter);
+                const duration = parseInt(counter.dataset.duration) || 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    });
+
+    counters.forEach(counter => observer.observe(counter));
+
+    // Animation des barres de progression
+    const progressBars = document.querySelectorAll('[data-progress]');
+    progressBars.forEach(bar => {
+        const target = parseInt(bar.dataset.progress);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    bar.style.width = target + '%';
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(bar);
+    });
+});
+</script>
+{% endblock %}

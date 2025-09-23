@@ -1,0 +1,400 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ma Liste de Souhaits - La Caravela{% endblock %}
+
+{% block content %}
+<div class="min-h-screen py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- En-tête -->
+        <div class="text-center mb-12 scroll-reveal">
+            <h1 class="text-4xl font-display font-bold gradient-text mb-4">
+                Ma Liste de Souhaits
+            </h1>
+            <p class="text-xl text-gray-600 animate-fade-in">
+                Retrouvez vos glaces favorites
+            </p>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 scroll-reveal">
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-blue-600 mb-2" data-counter="8" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">Produits Favoris</h3>
+                <p class="text-gray-600">Dans votre liste</p>
+            </div>
+
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-mint-600 mb-2" data-counter="42" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">Prix Total</h3>
+                <p class="text-gray-600">Valeur de votre liste</p>
+            </div>
+
+            <div class="stats-card">
+                <div class="text-3xl font-bold text-lavender-600 mb-2" data-counter="3" data-duration="2000">0</div>
+                <h3 class="text-lg font-semibold mb-2">Catégories</h3>
+                <p class="text-gray-600">Variété de parfums</p>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap justify-between items-center mb-8 scroll-reveal">
+            <div class="flex space-x-4">
+                <button class="btn-rainbow hover-ripple">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    Ajouter tout au panier
+                </button>
+                <button class="btn-secondary hover-ripple">
+                    <i class="fas fa-share mr-2"></i>
+                    Partager ma liste
+                </button>
+            </div>
+            <div class="flex space-x-2">
+                <button class="btn-mint hover-ripple">
+                    <i class="fas fa-th mr-2"></i>
+                    Grille
+                </button>
+                <button class="btn-secondary hover-ripple">
+                    <i class="fas fa-list mr-2"></i>
+                    Liste
+                </button>
+            </div>
+        </div>
+
+        <!-- Liste des produits favoris -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Produit 1 -->
+            <div class="product-card-dynamic hover-tilt scroll-reveal">
+                <div class="relative">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-100 to-red-100 rounded-t-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-ice-cream text-6xl text-blue-500 animate-float"></i>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center hover-ripple">
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="absolute top-4 left-4">
+                        <span class="badge-dynamic">⭐ Favori</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Vanille de Madagascar</h3>
+                    <p class="text-gray-600 mb-4">Une glace onctueuse à la vanille bourbon de Madagascar</p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-blue-600">45 MAD</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">(24 avis)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="btn-primary flex-1 hover-ripple">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            Ajouter au panier
+                        </button>
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 2 -->
+            <div class="product-card-dynamic hover-tilt scroll-reveal">
+                <div class="relative">
+                    <div class="w-full h-48 bg-gradient-to-br from-mint-100 to-mint-200 rounded-t-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-ice-cream text-6xl text-mint-500 animate-float" style="animation-delay: 0.5s;"></i>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center hover-ripple">
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="absolute top-4 left-4">
+                        <span class="badge-dynamic">⭐ Favori</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Mangue Passion</h3>
+                    <p class="text-gray-600 mb-4">Mélange exotique de mangue et fruit de la passion</p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-mint-600">55 MAD</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">(18 avis)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="btn-primary flex-1 hover-ripple">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            Ajouter au panier
+                        </button>
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 3 -->
+            <div class="product-card-dynamic hover-tilt scroll-reveal">
+                <div class="relative">
+                    <div class="w-full h-48 bg-gradient-to-br from-lavender-100 to-lavender-200 rounded-t-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-ice-cream text-6xl text-lavender-500 animate-float" style="animation-delay: 1s;"></i>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center hover-ripple">
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="absolute top-4 left-4">
+                        <span class="badge-dynamic">⭐ Favori</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Lavande de Provence</h3>
+                    <p class="text-gray-600 mb-4">Glace parfumée à la lavande de Provence</p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-lavender-600">58 MAD</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">(31 avis)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="btn-primary flex-1 hover-ripple">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            Ajouter au panier
+                        </button>
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 4 -->
+            <div class="product-card-dynamic hover-tilt scroll-reveal">
+                <div class="relative">
+                    <div class="w-full h-48 bg-gradient-to-br from-coral-100 to-coral-200 rounded-t-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-ice-cream text-6xl text-coral-500 animate-float" style="animation-delay: 1.5s;"></i>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center hover-ripple">
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="absolute top-4 left-4">
+                        <span class="badge-dynamic">⭐ Favori</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Chocolat Noir 70%</h3>
+                    <p class="text-gray-600 mb-4">Glace intense au chocolat noir équitable</p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-coral-600">50 MAD</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">(42 avis)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="btn-primary flex-1 hover-ripple">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            Ajouter au panier
+                        </button>
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 5 -->
+            <div class="product-card-dynamic hover-tilt scroll-reveal">
+                <div class="relative">
+                    <div class="w-full h-48 bg-gradient-to-br from-sunshine-100 to-sunshine-200 rounded-t-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-ice-cream text-6xl text-sunshine-500 animate-float" style="animation-delay: 2s;"></i>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center hover-ripple">
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="absolute top-4 left-4">
+                        <span class="badge-dynamic">⭐ Favori</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Pistache de Sicile</h3>
+                    <p class="text-gray-600 mb-4">Glace à la pistache AOP de Sicile</p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-sunshine-600">65 MAD</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">(15 avis)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="btn-primary flex-1 hover-ripple">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            Ajouter au panier
+                        </button>
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produit 6 -->
+            <div class="product-card-dynamic hover-tilt scroll-reveal">
+                <div class="relative">
+                    <div class="w-full h-48 bg-gradient-to-br from-mint-100 to-lavender-200 rounded-t-2xl flex items-center justify-center mb-4">
+                        <i class="fas fa-ice-cream text-6xl text-mint-500 animate-float" style="animation-delay: 2.5s;"></i>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-coral-500 text-white rounded-full flex items-center justify-center hover-ripple">
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="absolute top-4 left-4">
+                        <span class="badge-dynamic">⭐ Favori</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 gradient-text">Amande Bio</h3>
+                    <p class="text-gray-600 mb-4">Glace à l'amande sans lactose</p>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-mint-600">56 MAD</span>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">(22 avis)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button class="btn-primary flex-1 hover-ripple">
+                            <i class="fas fa-cart-plus mr-2"></i>
+                            Ajouter au panier
+                        </button>
+                        <button class="btn-secondary hover-ripple">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Message si liste vide -->
+        <div class="text-center py-12 hidden">
+            <div class="w-32 h-32 bg-gray-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <i class="fas fa-heart text-6xl text-gray-400"></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-600 mb-4">Votre liste de souhaits est vide</h3>
+            <p class="text-gray-500 mb-8">Ajoutez des produits à votre liste de favoris pour les retrouver facilement</p>
+            <button class="btn-primary hover-ripple">
+                <i class="fas fa-shopping-bag mr-2"></i>
+                Découvrir nos produits
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animation des compteurs
+    const counters = document.querySelectorAll('[data-counter]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.dataset.counter);
+                const duration = parseInt(counter.dataset.duration) || 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    });
+
+    counters.forEach(counter => observer.observe(counter));
+
+    // Animation des cartes au scroll
+    const cards = document.querySelectorAll('.scroll-reveal');
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.6s ease';
+        cardObserver.observe(card);
+    });
+});
+</script>
+{% endblock %}
