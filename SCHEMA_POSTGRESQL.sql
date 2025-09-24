@@ -526,3 +526,4 @@ COMMENT ON COLUMN user_profiles.loyalty_tier IS 'Niveau de fidélité: bronze, s
 -- FIN DU SCHÉMA
 -- =====================================================
 
+
