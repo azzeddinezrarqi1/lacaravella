@@ -181,6 +181,10 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 ACCOUNT_LOGOUT_ON_GET = True  # Permet la déconnexion directe sans confirmation
 
+# Désactiver les messages par défaut d'Allauth
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_LOGOUT_ON_GET = True
+
 # Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Change for production
 DEFAULT_FROM_EMAIL = 'contact@lacaravela.com'

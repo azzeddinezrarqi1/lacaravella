@@ -12,7 +12,7 @@
 
                 {% if messages %}
                     {% for message in messages %}
-                        {% if message.tags == 'success' %}
+                        {% if message.tags == 'success' and 'déconnecté' in message|string %}
                             <div class="mb-4 rounded-lg border border-green-300 bg-green-50 text-green-700 p-3 text-sm">
                                 <div class="flex items-center">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">

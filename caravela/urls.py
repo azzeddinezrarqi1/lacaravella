@@ -26,6 +26,9 @@ urlpatterns = [
     # Authentification (Django Allauth)
     path('accounts/', include('allauth.urls')),
     
+    # Déconnexion personnalisée
+    path('logout/', include('users.urls')),
+    
     # API REST (laisse le router sous /)
     path('legal/terms/', TemplateView.as_view(template_name='legal/terms.html'), name='legal_terms'),
     path('legal/privacy/', TemplateView.as_view(template_name='legal/privacy.html'), name='legal_privacy'),

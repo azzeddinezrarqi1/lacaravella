@@ -1,5 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.contrib import messages
+
+
+@login_required
+def custom_logout_view(request):
+    """Vue personnalisée de déconnexion avec message unique"""
+    # Effectuer la déconnexion d'abord
+    logout(request)
+    
+    # Effacer tous les messages existants (après logout)
+    storage = messages.get_messages(request)
+    list(storage)  # Consommer tous les messages
+    
+    # Ajouter seulement notre message personnalisé
+    messages.success(request, "Vous avez été déconnecté avec succès. À bientôt !")
+    
+    # Rediriger vers la page de connexion
+    return redirect('account_login')
 
 
 @login_required
